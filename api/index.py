@@ -6,10 +6,11 @@ import sys
 import os
 
 # Agregar el directorio raíz al path
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, root_dir)
 
 # Importar la app de Flask
 from app import app
 
-# Exportar para Vercel
-handler = app
+# Vercel necesita que la app se llame 'app' o se exporte como handler
+# Flask app ya está lista para WSGI
