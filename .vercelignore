@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+test_demo.py
+EJEMPLO_USO.md
+.git/
+.gitignore

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Tarjetas ConsolidGPT</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding: 40px;
+            background: #f8fafc;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #1e40af;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            color: #0f172a;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎨 Tarjetas Interactivas - ConsolidGPT</h1>
+        
+        <div class="section">
+            <h2>✈️ Tarjeta de Vuelo</h2>
+            <div class="info-card flight-card">
+                <div class="flight-card-header">
+                    <div class="flight-icon">✈️</div>
+                    <div class="flight-title">
+                        <h4>Aeroméxico</h4>
+                        <div class="flight-code">Vuelo AM540</div>
+                    </div>
+                </div>
+                
+                <div class="flight-details">
+                    <div class="flight-point">
+                        <div class="flight-time">9:00 AM</div>
+                        <div class="flight-date">1 Dic</div>
+                        <div class="flight-location">CDMX (MEX)</div>
+                    </div>
+                    
+                    <div class="flight-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                        <div class="flight-duration">~2h 30m</div>
+                    </div>
+                    
+                    <div class="flight-point">
+                        <div class="flight-time">4:30 PM</div>
+                        <div class="flight-date">7 Dic</div>
+                        <div class="flight-location">Cancún (CUN)</div>
+                    </div>
+                </div>
+                
+                <div class="flight-info-row">
+                    <span class="flight-info-label">Clase</span>
+                    <span class="flight-info-value">Turista</span>
+                </div>
+                
+                <div class="flight-info-row">
+                    <span class="flight-info-label">Equipaje</span>
+                    <span class="flight-info-value">1 maleta incluida</span>
+                </div>
+                
+                <div class="flight-info-row">
+                    <span class="flight-info-label">Precio por persona</span>
+                    <span class="flight-info-value">$8,500 MXN</span>
+                </div>
+                
+                <button class="reserve-btn" onclick="alert('Reservando vuelo AM540...')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 11l3 3L22 4"></path>
+                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                    </svg>
+                    Reservar Vuelo
+                </button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏨 Tarjeta de Hotel</h2>
+            <div class="info-card hotel-card">
+                <div class="hotel-card-header">
+                    <div class="hotel-icon">🏨</div>
+                    <div class="hotel-info">
+                        <div class="hotel-name">Hyatt Ziva Cancún</div>
+                        <div class="hotel-stars">⭐⭐⭐⭐⭐</div>
+                        <div class="hotel-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Zona Hotelera, Cancún
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hotel-features">
+                    <div class="hotel-feature">🍽️ All-Inclusive</div>
+                    <div class="hotel-feature">🏖️ Frente al mar</div>
+                    <div class="hotel-feature">👶 Kids Club</div>
+                    <div class="hotel-feature">🏊 Albercas</div>
+                    <div class="hotel-feature">🍹 Bares</div>
+                </div>
+                
+                <div class="hotel-policies">
+                    <div class="hotel-policies-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                        Política de Cancelación
+                    </div>
+                    <div class="hotel-policies-text">
+                        Cancelación gratuita hasta 72 horas antes del check-in. 
+                        Consulta nuestra base de contratos para más detalles.
+                    </div>
+                </div>
+                
+                <div class="hotel-price">
+                    <div class="price-info">
+                        <span class="price-label">Precio total (6 noches)</span>
+                        <span class="price-amount">$12,500</span>
+                        <span class="price-per">MXN por habitación</span>
+                    </div>
+                    <button class="reserve-btn hotel" onclick="alert('Reservando Hyatt Ziva...')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                        </svg>
+                        Reservar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎁 Tarjeta de Paquete</h2>
+            <div class="info-card package-card">
+                <div class="package-badge">🎁 PAQUETE ESPECIAL</div>
+                <div class="package-title">Paquete Cancún Todo Incluido</div>
+                <div class="package-description">
+                    Disfruta de unas vacaciones inolvidables con todo incluido. 
+                    Vuelo redondo + Hotel 5 estrellas + Traslados.
+                </div>
+                
+                <div class="package-includes">
+                    <div class="package-includes-title">✨ Incluye:</div>
+                    <div class="package-includes-list">
+                        <div class="package-include-item">Vuelo redondo CDMX-CUN</div>
+                        <div class="package-include-item">6 noches en Hyatt Ziva</div>
+                        <div class="package-include-item">All-Inclusive Premium</div>
+                        <div class="package-include-item">Traslados aeropuerto-hotel</div>
+                        <div class="package-include-item">Acceso a Kids Club</div>
+                        <div class="package-include-item">Actividades acuáticas</div>
+                    </div>
+                </div>
+                
+                <div class="package-price-section">
+                    <div class="package-price-details">
+                        <span class="package-price-label">Precio por persona</span>
+                        <span class="package-price-amount">$25,000</span>
+                        <span class="package-price-savings">💰 Ahorras $3,750 MXN vs compra separada</span>
+                    </div>
+                    <button class="reserve-btn package" onclick="alert('Reservando paquete...')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                        </svg>
+                        Reservar Paquete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💬 Ejemplo en Chat</h2>
+            <div class="message bot-message">
+                <div class="message-avatar bot-avatar">🤖</div>
+                <div class="message-content">
+                    <div class="message-text">
+                        <p>¡Perfecto! He encontrado estas opciones para tu viaje a Cancún:</p>
+                    </div>
+                    <div class="cards-container">
+                        <div class="info-card flight-card">
+                            <div class="flight-card-header">
+                                <div class="flight-icon">✈️</div>
+                                <div class="flight-title">
+                                    <h4>Aeroméxico</h4>
+                                    <div class="flight-code">Vuelo AM540</div>
+                                </div>
+                            </div>
+                            <div class="flight-details">
+                                <div class="flight-point">
+                                    <div class="flight-time">9:00 AM</div>
+                                    <div class="flight-date">1 Dic</div>
+                                    <div class="flight-location">CDMX</div>
+                                </div>
+                                <div class="flight-arrow">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                    <div class="flight-duration">~2h 30m</div>
+                                </div>
+                                <div class="flight-point">
+                                    <div class="flight-time">4:30 PM</div>
+                                    <div class="flight-date">7 Dic</div>
+                                    <div class="flight-location">Cancún</div>
+                                </div>
+                            </div>
+                            <div class="flight-info-row">
+                                <span class="flight-info-label">Precio</span>
+                                <span class="flight-info-value">$8,500 MXN</span>
+                            </div>
+                            <button class="reserve-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11l3 3L22 4"></path>
+                                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                                </svg>
+                                Reservar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

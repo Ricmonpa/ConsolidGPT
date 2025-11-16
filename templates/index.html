@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>ConsolidGPT - Tu Co-Piloto de Viajes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Overlay para cerrar sidebar en móvil -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-sidebar">
+                <img src="{{ url_for('static', filename='logo consolid-gpt.png') }}?v=3" alt="ConsolidGPT Logo" class="logo-img">
+                <span>CONSOLID</span>
+            </div>
+            <button class="sidebar-close" onclick="toggleSidebar()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="#" class="nav-item" data-view="chat" onclick="switchView('chat')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>New Search</span>
+            </a>
+            
+            <a href="#" class="nav-item" data-view="historial" onclick="switchView('historial')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>History</span>
+            </a>
+            
+            <a href="#" class="nav-item" data-view="settings" onclick="switchView('settings')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6m-9-9h6m6 0h6"></path>
+                </svg>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <div class="user-name">Agente Consolid</div>
+                    <div class="user-email">agente@consolid.com</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Mobile Header con hamburguesa -->
+        <div class="mobile-header">
+            <button class="hamburger-btn" onclick="toggleSidebar()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <div class="mobile-logo">ConsolidGPT</div>
+        </div>
+
+        <!-- Dashboard View -->
+        <div class="view-container" id="dashboardView">
+            <div class="dashboard-header">
+                <h1>Dashboard</h1>
+                <p>Resumen de tu actividad</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalConsultas">0</div>
+                        <div class="stat-label">Consultas Hoy</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">✈️</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalReservas">0</div>
+                        <div class="stat-label">Reservas Simuladas</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="comisionTotal">$0</div>
+                        <div class="stat-label">Comisión Potencial</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🌴</div>
+                    <div class="stat-content">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Paquetes Disponibles</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h2>Acciones Rápidas</h2>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="switchView('chat')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Nueva Consulta
+                    </button>
+                    <button class="action-btn" onclick="switchView('historial')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Ver Historial
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat View (Crear Reservación) -->
+        <div class="view-container hidden" id="chatView">
+            <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <img src="{{ url_for('static', filename='logo consolid-gpt.png') }}?v=3" alt="ConsolidGPT Logo" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <div class="logo-text">
+                    <h1>ConsolidGPT - Your Travel Co-Pilot</h1>
+                    <p>Asistente IA para Agentes de Viajes ✨</p>
+                </div>
+            </div>
+            <button class="reset-btn" onclick="resetChat()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                    <path d="M21 3v5h-5"/>
+                    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                    <path d="M3 21v-5h5"/>
+                </svg>
+                Reiniciar
+            </button>
+        </header>
+
+        <!-- Chat Container -->
+        <div class="chat-container" id="chatContainer">
+            <!-- Mensaje de bienvenida -->
+            <div class="message bot-message">
+                <div class="message-avatar bot-avatar"></div>
+                <div class="message-content">
+                    <div class="message-text">
+                        <p>¡Hola! 👋 Soy <strong>ConsolidGPT</strong>, tu Co-Piloto de Viajes para agentes de Consolid. 🌴✨</p>
+                        <p>Puedo ayudarte a cotizar paquetes, consultar políticas y generar reservaciones. ¿Qué necesitas hoy?</p>
+                        <div class="quick-actions">
+                            <button class="quick-btn" onclick="sendQuickMessage('Necesito un viaje familiar a Cancún')">
+                                ✈️ Viaje a Cancún
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickMessage('¿Cuáles son las políticas de cancelación?')">
+                                📜 Políticas
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickMessage('Cuéntame sobre el kids club')">
+                                👶 Kids Club
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-container">
+            <div class="input-wrapper">
+                <textarea 
+                    id="messageInput" 
+                    placeholder="Escribe tu mensaje aquí..." 
+                    rows="1"
+                    onkeydown="handleKeyPress(event)"
+                ></textarea>
+                <button class="send-btn" onclick="sendMessage()" id="sendBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-hint">
+                Presiona <kbd>Enter</kbd> para enviar, <kbd>Shift + Enter</kbd> para nueva línea
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <!-- Historial View -->
+        <div class="view-container hidden" id="historialView">
+            <div class="historial-header">
+                <h1>Historial de Conversaciones</h1>
+                <p>Revisa tus consultas anteriores</p>
+            </div>
+            
+            <div class="historial-list" id="historialList">
+                <div class="empty-state">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <h3>No hay historial aún</h3>
+                    <p>Tus conversaciones aparecerán aquí</p>
+                    <button class="action-btn" onclick="switchView('chat')">Iniciar Nueva Consulta</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings View -->
+        <div class="view-container hidden" id="settingsView">
+            <div class="settings-header">
+                <h1>Configuración</h1>
+                <p>Personaliza tu experiencia</p>
+            </div>
+            
+            <div class="settings-content">
+                <div class="settings-section">
+                    <h3>Perfil</h3>
+                    <div class="setting-item">
+                        <label>Nombre del Agente</label>
+                        <input type="text" value="Agente Consolid" class="setting-input">
+                    </div>
+                    <div class="setting-item">
+                        <label>Email</label>
+                        <input type="email" value="agente@consolid.com" class="setting-input">
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Preferencias</h3>
+                    <div class="setting-item">
+                        <label>Idioma</label>
+                        <select class="setting-input">
+                            <option value="es" selected>Español</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Tasa de Comisión</label>
+                        <input type="number" value="14" min="0" max="100" class="setting-input">
+                        <small>Porcentaje de comisión sobre el total</small>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Notificaciones</h3>
+                    <div class="setting-toggle">
+                        <label>Notificaciones de nuevas reservas</label>
+                        <input type="checkbox" checked>
+                    </div>
+                    <div class="setting-toggle">
+                        <label>Alertas de disponibilidad</label>
+                        <input type="checkbox" checked>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Acerca de</h3>
+                    <div class="about-info">
+                        <p><strong>ConsolidGPT</strong> v2.0</p>
+                        <p>Agente Conversacional con IA</p>
+                        <p>Powered by Google Gemini AI</p>
+                        <p class="text-muted">© 2025 Consolid. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

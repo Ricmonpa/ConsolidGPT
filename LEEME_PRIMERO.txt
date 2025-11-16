@@ -1,0 +1,127 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║              🌴 CONSOLID-GPT 🧠                              ║
+║    Agente Conversacional Inteligente para Viajes            ║
+║         Powered by Google Gemini AI ✨                       ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+¡HOLA! 👋
+
+Tienes un AGENTE DE IA CONVERSACIONAL completo y listo para usar.
+
+✨ NUEVO: Ahora con inteligencia artificial real de Google Gemini
+   - Conversaciones naturales y fluidas
+   - Entiende contexto y mantiene memoria
+   - Respuestas inteligentes y personalizadas
+
+═══════════════════════════════════════════════════════════════
+
+🚀 INICIO RÁPIDO (2 MINUTOS):
+
+1. Abre tu Terminal
+
+2. Ejecuta:
+   ./START.sh
+
+3. Abre tu navegador en:
+   http://localhost:5000
+
+4. ¡Listo! Ya puedes chatear con el bot
+
+═══════════════════════════════════════════════════════════════
+
+🌐 PARA COMPARTIR CON CLIENTES:
+
+1. Instala Vercel CLI:
+   npm install -g vercel
+
+2. Deploy:
+   vercel --prod
+
+3. Te dará una URL como:
+   https://consolid-gpt-xxxxx.vercel.app
+
+4. ¡Comparte esa URL con tus clientes!
+
+═══════════════════════════════════════════════════════════════
+
+📚 DOCUMENTACIÓN:
+
+- RESUMEN.md          → Resumen ejecutivo de todo
+- INICIO_RAPIDO.md    → Cómo empezar en 2 minutos
+- DEPLOY_VERCEL.md    → Guía completa de deploy
+- FEATURES.md         → Todas las características
+- PARA_CLIENTES.md    → Guía para tus clientes
+- README.md           → Documentación técnica completa
+
+═══════════════════════════════════════════════════════════════
+
+🎨 LO QUE HACE:
+
+✅ 🧠 Agente IA con Google Gemini - Conversaciones naturales
+✅ 💬 Entiende contexto y mantiene memoria de conversación
+✅ 🎯 Respuestas inteligentes y personalizadas
+✅ 💡 Sugiere y recomienda activamente
+✅ ✈️ Presenta paquetes de viaje a Cancún
+✅ 💰 Calcula comisiones automáticamente (14%)
+✅ 📜 Responde preguntas sobre políticas y kids clubs
+✅ 🎫 Simula reservas con códigos PNR
+✅ 📱 Funciona en móvil y desktop
+✅ 🚀 Listo para deploy en Vercel
+
+═══════════════════════════════════════════════════════════════
+
+📁 ARCHIVOS IMPORTANTES:
+
+app.py                    → Servidor web (backend)
+src/ai_agent.py           → 🧠 Agente IA con Google Gemini
+.env                      → API Key de Google (protegida)
+templates/index.html      → Interfaz web (frontend)
+static/style.css          → Estilos
+static/script.js          → JavaScript del chat
+data/Base_de_Datos_Cancun.txt → Base de datos
+
+═══════════════════════════════════════════════════════════════
+
+💡 PERSONALIZACIÓN RÁPIDA:
+
+• Cambiar personalidad del agente IA:
+  Edita: src/ai_agent.py (método _build_system_prompt)
+
+• Cambiar colores:
+  Edita: static/style.css (líneas 8-20)
+
+• Cambiar comisión:
+  Edita: src/ai_agent.py (en el system prompt, cambiar 14%)
+
+• Agregar paquetes:
+  Edita: data/Base_de_Datos_Cancun.txt
+
+• Cambiar API Key:
+  Edita: .env (GOOGLE_API_KEY)
+
+═══════════════════════════════════════════════════════════════
+
+🆘 ¿PROBLEMAS?
+
+1. Verifica que Python 3 esté instalado:
+   python3 --version
+
+2. Instala/actualiza dependencias:
+   pip3 install -r requirements.txt --upgrade
+
+3. Si hay error con Google AI:
+   pip3 install --upgrade google-generativeai
+
+4. Revisa SOLUCION_PROBLEMAS.md para más ayuda
+
+═══════════════════════════════════════════════════════════════
+
+🎉 ¡DISFRUTA TU NUEVO CHATBOT!
+
+ConsolidGPT está listo para ayudarte a vender más viajes.
+
+¡Buen viaje! 🌴✈️
+
+═══════════════════════════════════════════════════════════════
