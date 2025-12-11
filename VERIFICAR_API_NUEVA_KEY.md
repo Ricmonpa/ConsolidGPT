@@ -2,10 +2,9 @@
 
 ## 🔑 Nueva API Key Configurada
 
-Tu nueva API key ha sido actualizada en el archivo `.env`:
-```
-AIzaSyBihxp8wywPyu46S-fZE2O0ZLhps8UYyZU
-```
+Tu nueva API key ha sido actualizada en el archivo `.env`.
+
+⚠️ **IMPORTANTE:** NUNCA subas tu API key a GitHub. Este archivo solo es una guía.
 
 ---
 
@@ -16,7 +15,7 @@ Cuando creas una nueva API key, es posible que necesites habilitar la API de Gen
 ### Paso 1: Identificar el Proyecto de la API Key
 
 1. Ve a: **https://console.cloud.google.com/apis/credentials**
-2. Busca tu API key `AIzaSyBihxp8wywPyu46S-fZE2O0ZLhps8UYyZU`
+2. Busca tu API key en la lista
 3. Nota el **nombre del proyecto** donde está creada
 4. También puedes ver el **Project ID** o **Project Number**
 
@@ -70,7 +69,7 @@ Si necesitas habilitar la API, estos son los links más comunes:
 Después de verificar/habilitar, prueba con este comando:
 
 ```bash
-curl "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=AIzaSyBihxp8wywPyu46S-fZE2O0ZLhps8UYyZU" \
+curl "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=TU_API_KEY_AQUI" \
   -H 'Content-Type: application/json' \
   -d '{
     "contents": [{
@@ -128,7 +127,7 @@ Una vez verificado:
 
 3. **Cuando despliegues en Vercel:**
    - Actualiza también la variable de entorno `GOOGLE_API_KEY` en Vercel
-   - Con la nueva API key: `AIzaSyBihxp8wywPyu46S-fZE2O0ZLhps8UYyZU`
+   - Con tu nueva API key (reemplaza TU_API_KEY_AQUI)
 
 ---
 

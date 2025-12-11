@@ -228,7 +228,31 @@ Tú: "Perfecto para familia. Te presento 2 opciones con excelente kids club:
                 error_data = response.json().get('error', {})
                 error_msg = error_data.get('message', 'Error desconocido')
                 
-                # Detectar errores de cuota específicamente
+                # Detectar errores específicos
+                if 'leaked' in error_msg.lower() or 'reported as leaked' in error_msg.lower():
+                    return f"""❌ Error: API Key Comprometida
+
+Tu API key fue marcada como "leaked" (comprometida) por Google.
+
+🔒 **Problema:** La API key se expuso públicamente (probablemente en GitHub o código público).
+
+🔧 **Solución:**
+1. Ve a: https://console.cloud.google.com/apis/credentials
+2. Elimina o revoca la API key actual que está marcada como leaked
+3. Crea una NUEVA API key:
+   - Click en "CREATE CREDENTIALS" → "API Key"
+   - Nombre: "ConsolidGPT Production" (o el que prefieras)
+   - Configura restricciones (API: Generative Language API, Aplicación: Ninguno para Vercel)
+4. Actualiza en Vercel:
+   - Settings → Environment Variables → GOOGLE_API_KEY
+   - Reemplaza con la nueva key
+5. Haz redeploy
+
+⚠️ **Importante:** Asegúrate de que la nueva key NUNCA se suba a GitHub.
+Verifica que `.env` esté en `.gitignore`.
+
+Error completo: {error_msg}"""
+                
                 if 'quota' in error_msg.lower() or 'exceeded' in error_msg.lower() or 'limit: 0' in error_msg.lower():
                     # Verificar si es problema de cuota agotada o proyecto sin cuota
                     if 'limit: 0' in error_msg.lower():
