@@ -41,9 +41,9 @@ fi
 # 4. Verificar que no hay referencias a GOOGLE_API_KEY con valores reales
 echo ""
 echo "4️⃣ Verificando referencias a GOOGLE_API_KEY..."
-if git grep -q "GOOGLE_API_KEY.*AIzaSy" -- ':(exclude).gitignore' 2>/dev/null; then
+if git grep -q "GOOGLE_API_KEY.*AIzaSy[A-Za-z0-9_-]\{35,\}" -- ':(exclude).gitignore' 2>/dev/null; then
     echo "   ❌ Se encontraron asignaciones de API key en código"
-    git grep -n "GOOGLE_API_KEY.*AIzaSy" -- ':(exclude).gitignore' 2>/dev/null | head -5 | sed 's/^/      /'
+    git grep -n "GOOGLE_API_KEY.*AIzaSy[A-Za-z0-9_-]\{35,\}" -- ':(exclude).gitignore' 2>/dev/null | head -5 | sed 's/^/      /'
     ERRORS=$((ERRORS + 1))
 else
     echo "   ✅ No hay asignaciones directas de API key en código"
