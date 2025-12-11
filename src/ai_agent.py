@@ -18,8 +18,9 @@ class AIAgent:
             database_content: Contenido completo de la base de datos
         """
         self.api_key = api_key
-        # Usar gemini-2.0-flash que está disponible en v1
-        self.api_url = f"https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key={api_key}"
+        # Usar gemini-1.5-flash que tiene free tier disponible
+        # Si falla, intentar con gemini-pro como alternativa
+        self.api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
         
         # Configuración de generación
         self.generation_config = {
