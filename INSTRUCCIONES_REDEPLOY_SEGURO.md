@@ -30,7 +30,7 @@
 **2. Verifica que la nueva API key esté en Environment Variables:**
    - Settings → Environment Variables
    - Busca `GOOGLE_API_KEY`
-   - Verifica que tenga el valor: `AIzaSyA-8GLqKz9rqkBuqCSk83oQERNg3D9cn6A`
+   - Verifica que tenga tu API key (NO la muestres aquí)
    - Si no está, actualízala ahora
 
 **3. Haz REDEPLOY:**
