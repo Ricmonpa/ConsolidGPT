@@ -56,9 +56,22 @@ DOC_FILES=$(git ls-files | grep -E "\.(md|txt)$")
 if echo "$DOC_FILES" | xargs grep -l "AIzaSy[A-Za-z0-9_-]\{35\}" 2>/dev/null; then
     echo "   ❌ Se encontraron API keys en archivos de documentación:"
     echo "$DOC_FILES" | xargs grep -l "AIzaSy[A-Za-z0-9_-]\{35\}" 2>/dev/null | sed 's/^/      - /'
+    echo "   ⚠️  AUNQUE SEA EN DOCUMENTACIÓN, NO DEBES INCLUIR API KEYS REALES"
     ERRORS=$((ERRORS + 1))
 else
     echo "   ✅ No hay API keys en archivos de documentación"
+fi
+
+# 6. Verificación FINAL: buscar en TODOS los archivos tracked (sin excepciones)
+echo ""
+echo "6️⃣ Verificación final: TODOS los archivos tracked..."
+if git grep -q "AIzaSy[A-Za-z0-9_-]\{35,\}" -- ':(exclude).gitignore' 2>/dev/null; then
+    echo "   ❌ CRÍTICO: API keys encontradas en archivos tracked:"
+    git grep -n "AIzaSy[A-Za-z0-9_-]\{35,\}" -- ':(exclude).gitignore' 2>/dev/null | head -10 | sed 's/^/      /'
+    echo "   🚨 ELIMINA ESTAS API KEYS ANTES DE HACER COMMIT"
+    ERRORS=$((ERRORS + 1))
+else
+    echo "   ✅ No se encontraron API keys en ningún archivo tracked"
 fi
 
 # Resumen
