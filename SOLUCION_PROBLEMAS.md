@@ -26,7 +26,7 @@ pip3 show google-generativeai
 1. Verifica que existe el archivo `.env` en la raíz del proyecto
 2. Abre `.env` y verifica que contenga:
    ```
-   GOOGLE_API_KEY=AIzaSyC5UAimCkhMrdWZ12YrI4chzchSfwQBbJY
+   GOOGLE_API_KEY=tu-api-key-aqui
    ```
 3. Reinicia el servidor
 

@@ -159,7 +159,7 @@ Luego abre: **http://localhost:5000**
 
 En Vercel Dashboard:
 ```
-GOOGLE_API_KEY = AIzaSyC5UAimCkhMrdWZ12YrI4chzchSfwQBbJY
+GOOGLE_API_KEY = tu-api-key-aqui
 ```
 
 ### Paso 2: Deploy

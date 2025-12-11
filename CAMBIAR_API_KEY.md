@@ -67,7 +67,7 @@ python app.py
 1. Obtienes tu nueva API key: `AIzaSyEjemplo123456789NuevaKey`
 2. Actualizas `.env`:
    ```
-   GOOGLE_API_KEY=AIzaSyEjemplo123456789NuevaKey
+   GOOGLE_API_KEY=tu-api-key-aqui
    ```
 3. Reinicias el servidor
 4. ¡Listo! Debería funcionar con la nueva cuota

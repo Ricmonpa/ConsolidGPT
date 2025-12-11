@@ -66,7 +66,7 @@ Recuerda todo lo que se ha hablado en la sesión:
 
 ### Variables de Entorno (.env)
 ```bash
-GOOGLE_API_KEY=AIzaSyC5UAimCkhMrdWZ12YrI4chzchSfwQBbJY
+GOOGLE_API_KEY=tu-api-key-aqui
 FLASK_ENV=development
 FLASK_DEBUG=True
 ```

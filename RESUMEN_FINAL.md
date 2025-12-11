@@ -105,7 +105,7 @@ Esto ejecutará una conversación completa de prueba.
 
 En Vercel Dashboard:
 1. Settings → Environment Variables
-2. Agrega: `GOOGLE_API_KEY` = `AIzaSyC5UAimCkhMrdWZ12YrI4chzchSfwQBbJY`
+2. Agrega: `GOOGLE_API_KEY` = `tu-api-key-aqui`
 3. Save
 
 ### Paso 2: Deploy
