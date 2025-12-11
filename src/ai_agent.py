@@ -224,7 +224,21 @@ Tú: "Perfecto para familia. Te presento 2 opciones con excelente kids club:
             )
             
             if response.status_code != 200:
-                error_msg = response.json().get('error', {}).get('message', 'Error desconocido')
+                error_data = response.json().get('error', {})
+                error_msg = error_data.get('message', 'Error desconocido')
+                
+                # Detectar errores de cuota específicamente
+                if 'quota' in error_msg.lower() or 'exceeded' in error_msg.lower():
+                    return f"""❌ Error de Cuota de API: {error_msg}
+
+💡 **Solución:**
+1. Obtén una nueva API key de Google Gemini en: https://aistudio.google.com/apikey
+2. Actualiza el archivo `.env` con la nueva API key:
+   GOOGLE_API_KEY=tu-nueva-api-key-aqui
+3. Reinicia el servidor
+
+Si necesitas ayuda, consulta la documentación en: https://ai.google.dev/docs"""
+                
                 return f"❌ Error de API: {error_msg}"
             
             # Extraer la respuesta
