@@ -228,16 +228,37 @@ Tú: "Perfecto para familia. Te presento 2 opciones con excelente kids club:
                 error_msg = error_data.get('message', 'Error desconocido')
                 
                 # Detectar errores de cuota específicamente
-                if 'quota' in error_msg.lower() or 'exceeded' in error_msg.lower():
-                    return f"""❌ Error de Cuota de API: {error_msg}
+                if 'quota' in error_msg.lower() or 'exceeded' in error_msg.lower() or 'limit: 0' in error_msg.lower():
+                    # Verificar si es problema de cuota agotada o proyecto sin cuota
+                    if 'limit: 0' in error_msg.lower():
+                        return f"""❌ Error: Proyecto sin cuota asignada
 
-💡 **Solución:**
-1. Obtén una nueva API key de Google Gemini en: https://aistudio.google.com/apikey
-2. Actualiza el archivo `.env` con la nueva API key:
-   GOOGLE_API_KEY=tu-nueva-api-key-aqui
-3. Reinicia el servidor
+El proyecto asociado a tu API key NO tiene cuota de Gemini asignada.
 
-Si necesitas ayuda, consulta la documentación en: https://ai.google.dev/docs"""
+🔧 **Soluciones:**
+
+1. **Habilitar la API en tu proyecto:**
+   🔗 https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com
+   - Selecciona el proyecto donde creaste la API key
+   - Si dice "ENABLE", haz click para habilitar
+   - Espera 2-5 minutos
+
+2. **Si ya está habilitada, verifica cuotas:**
+   🔗 https://console.cloud.google.com/apis/api/generativelanguage.googleapis.com/quotas
+   - Deberías ver cuotas como: 60 req/min, 1500 req/día
+   - Si dice "0", el proyecto necesita facturación habilitada (aunque no te cobren por free tier)
+
+3. **Habilitar facturación (requerido para free tier):**
+   🔗 https://console.cloud.google.com/billing
+   - Asocia una cuenta de facturación al proyecto
+   - Google NO te cobra por el free tier, pero requiere facturación habilitada
+
+Error completo: {error_msg}"""
+                    else:
+                        return f"""❌ Error de Cuota de API: {error_msg}
+
+Has superado el límite gratuito. Espera a que se reinicie el contador o revisa tu uso:
+🔗 https://ai.dev/usage?tab=rate-limit"""
                 
                 return f"❌ Error de API: {error_msg}"
             
